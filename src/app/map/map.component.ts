@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StationsService} from '.././stations.service';
-import { Station } from '../model/station';
 
 @Component({
   selector: 'vb-map',
@@ -8,17 +6,10 @@ import { Station } from '../model/station';
   styleUrls: ['./map.component.less']
 })
 export class MapComponent implements OnInit {
-  stations: Station[];
-  errorMsg: string;
 
-  constructor(private service: StationsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.service.fetch()
-                .subscribe(
-                  (data) => this.stations = data,
-                  (err) => this.errorMsg = err
-                );
   }
 
 }

@@ -7,11 +7,13 @@ import { StationsService } from './stations.service'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StationsComponent } from './stations/stations.component';
 import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    StationsComponent,
     MapComponent
   ],
   imports: [
