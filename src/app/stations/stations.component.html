@@ -1,11 +1,22 @@
 <p class="error" *ngIf="errorMsg">{{errorMsg}}</p>
-<ul>
-  <li *ngFor="let station of stations">
-    {{ station.name }}
-    {{ station.free_bikes}}
-    {{ station.empty_slots}}
-    {{ station.timestamp}}
-    {{ station.latitude}}
-  </li>
-</ul>
+
+<div class="stations">
+  <md-card *ngFor="let station of stations; let i=index" class="station-card">
+    <md-card-header>
+      <div md-card-avatar class="station-avatar"></div>
+      <md-card-title>Station no {{i + 1}}</md-card-title>
+      <md-card-subtitle class="station-subtitle">{{ station.name }}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <p> {{ station.free_bikes}} bikes</p>
+      <p> {{ station.empty_slots}} empty slots</p>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+    </md-card-actions>
+  </md-card
+</div>
+
+
 

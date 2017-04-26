@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StationsComponent } from './stations/stations.component';
 import { MapComponent } from './map/map.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MdMenuModule, MdCardModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { MapComponent } from './map/map.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MdMenuModule, 
+    MdCardModule
   ],
   providers: [StationsService],
   bootstrap: [AppComponent]
