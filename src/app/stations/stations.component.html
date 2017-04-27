@@ -1,21 +1,44 @@
 <p class="error" *ngIf="errorMsg">{{errorMsg}}</p>
 
+<div>
+  <ul>
+    <li>
+      <input type="text" placeholder="Street..." [(ngModel)]="filter.name">
+    </li>
+     <li>
+       <span>
+        Available bikes at least: <input type="number" placeholder="" [(ngModel)]="filter.free_bikes">
+      </span>
+    </li> 
+    <li>
+        <span>
+          Bezirk: <input type="number" placeholder="bezirk" [(ngModel)]="filter.uid">
+        </span>
+    </li>
+  </ul>
+
+
+  
+</div>
 <div class="stations">
-  <md-card *ngFor="let station of stations; let i=index" class="station-card">
+  <md-card *ngFor="let station of stations | stationFilter:filter; let i=index " class="station-card">
     <md-card-header>
       <div md-card-avatar class="station-avatar"></div>
-      <md-card-title>Station no {{i + 1}}</md-card-title>
+      <md-card-title>Station {{ station.extra.uid }}</md-card-title>
       <md-card-subtitle class="station-subtitle">{{ station.name }}</md-card-subtitle>
     </md-card-header>
     <md-card-content>
-      <p> {{ station.free_bikes}} bikes</p>
-      <p> {{ station.empty_slots}} empty slots</p>
+      <!--<p>{{ station.extra.description }}</p>-->
+      <ul>
+        <li> {{ station.free_bikes}} bikes</li>
+        <li> {{ station.empty_slots}} empty slots</li>
+      </ul>
     </md-card-content>
     <md-card-actions>
       <button md-button>LIKE</button>
       <button md-button>SHARE</button>
     </md-card-actions>
-  </md-card
+  </md-card>
 </div>
 
 

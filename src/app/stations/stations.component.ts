@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StationsService} from '.././stations.service';
-import { Station } from '../model/station';
+import { Station } from '../model/Station';
+import { StationFilter } from '../model/StationFilter';
 
 @Component({
   selector: 'vb-map',
@@ -10,6 +11,7 @@ import { Station } from '../model/station';
 export class StationsComponent implements OnInit {
   stations: Station[];
   errorMsg: string;
+  filter: StationFilter = new StationFilter();
 
   constructor(private service: StationsService) { }
 
