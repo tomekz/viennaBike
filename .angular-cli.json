@@ -19,9 +19,10 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "vb",
       "styles": [
-        "styles.less"
+        "styles.less",
+        "../node_modules/leaflet/dist/leaflet.css"
       ],
-      "scripts": [],
+        "scripts": [ "../node_modules/leaflet/dist/leaflet.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
