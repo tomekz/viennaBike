@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-// import { Map } from 'leaflet';
 
 @Component({
   selector: 'vb-map',
