@@ -1,6 +1,6 @@
 # Vienna CityBike
 
-![logo]("src/assets/img/citybike_logo.jpg" "Vienna CityBike")
+![logo](src/assets/img/citybike_logo.jpg "Vienna CityBike")
 
 Simple application that helps you localize nearest available CityBike in Vienna
 
