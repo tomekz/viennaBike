@@ -1,10 +1,10 @@
 # Vienna CityBike
 
-![logo](src/assets/img/citybike_logo.jpg "Vienna CityBike")
+[![logo](src/assets/img/citybike_logo.jpg "Vienna CityBike")](https://tomekz.github.io/viennaBike)
 
 Simple application that helps you localize nearest available CityBike in Vienna
 
-[Open application](https://tomekz.github.io/viennaBike/stations "viennaBike")
+[Open application](https://tomekz.github.io/viennaBike "viennaBike")
 
 Developed with:
 * Angular ver 4.0.0
