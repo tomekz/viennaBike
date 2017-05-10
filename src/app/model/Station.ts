@@ -2,7 +2,7 @@ export class StationExtra{
     description: string
     slots: number
     status: string
-    uid: number
+    uid: string
 }
 
 export class Station{

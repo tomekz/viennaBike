@@ -6,7 +6,9 @@ import { MapComponent } from './map/map.component';
 const routes: Routes = [
   { path: '', redirectTo: '/stations', pathMatch: 'full' },
   { path: 'stations',  component: StationsComponent },
-  { path: 'map',     component: MapComponent }
+  { path: 'map',     component: MapComponent },
+  { path: 'map/:id',     component: MapComponent }
+  
 ];
 
 @NgModule({
