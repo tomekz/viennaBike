@@ -6,7 +6,7 @@ const url = 'https://maps.googleapis.com/maps/api/js?key='+ API_KEY +'&callback=
 
 
 @Injectable()
-export class GoogleApiService {
+export class GoogleMapApiService {
   private loadMap: Promise<any>;
 
   constructor(private http:Http) {

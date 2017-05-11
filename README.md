@@ -1,12 +1,12 @@
 # Vienna CityBike
 
-[![logo](src/assets/img/citybike_logo.jpg "Vienna CityBike")](https://tomekz.github.io/viennaBike)
+[![logo](src/assets/img/citybike_logo.jpg "Vienna CityBike")](https://tomekz.github.io)
 
 Simple application that helps you localize nearest available CityBike in Vienna
 
 It relays on real-time data (refreshed every small time inverval)
 
-[Open application](https://tomekz.github.io/viennaBike "viennaBike")
+[Open application](https://tomekz.github.io "viennaBike")
 
 Developed with:
 * Angular 2 (ver 4.0.0)

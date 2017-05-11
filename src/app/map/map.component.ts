@@ -1,68 +1,81 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GoogleApiService} from '.././google-api.service';
+import { GoogleMapApiService} from '.././google-api.service';
 import { StationsService} from '.././stations.service';
 import { ActivatedRoute } from '@angular/router';
+import { Station } from '../model/Station';
 
 @Component({
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.less']
 })
 export class MapComponent implements OnInit, OnDestroy {
-private routeSubscription: any;
-stationId = '111';
-zoomIn = 17;
-zoomOut = 14;
+private onRouteChange: any;
+private markers: google.maps.Marker[] = [];
+private map: google.maps.Map;
 
   constructor(
-    private googleApiService: GoogleApiService, 
+    private googleApiService: GoogleMapApiService, 
     private stationsService: StationsService,
     private route: ActivatedRoute
   ) {}
 
   async ngOnInit() {
-    await this.googleApiService.initMap();
-    let stations = await this.stationsService.fetch();
+    await this.googleApiService.initMap();       
+    let stations = await this.stationsService.fetch();    
+    this.map =  new google.maps.Map(document.getElementById('map'));
+   
+    this.markers = this.initMarkers(stations);
+
+    this.onRouteChange = this.route.params.subscribe(params => {
+       let routeWithNoId =  params['id'] === undefined;
+       let stationId = routeWithNoId ? '111' : params['id'] // if no station requested fallback to default station 
+       let station = stations.find((x) => x.extra.uid === stationId)
     
-    let station = stations.find((x) => x.extra.uid === this.stationId)
-    let map =  new google.maps.Map(document.getElementById('map'), {
-                     center: new google.maps.LatLng(station.latitude, station.longitude),
-                     zoom: this.zoomOut
+       this.map.setZoom(routeWithNoId ? 14 : 18);
+       this.map.setCenter({lat: station.latitude, lng: station.longitude});    
+  
+          
     });
 
-    stations.forEach((station) => {
-           let marker = new google.maps.Marker({
-               position: new google.maps.LatLng(station.latitude, station.longitude),
-               map: map,
-               title: station.name
-            });
-
-            // marker.addListener('click', function() {
-            //   map.setZoom(this.zoomIn);
-            //   map.setCenter(marker.getPosition());
-
-            // });
-    })
-
-    this.routeSubscription = this.route.params.subscribe(params => {
-      
-       let zoom = this.zoomOut;
-       if(params['id'] !== undefined){
-         this.stationId = params['id']; 
-         zoom = this.zoomIn;
-       }
-       let station = stations.find((x) => x.extra.uid === this.stationId)
-        map.setZoom(zoom);
-        map.setCenter({lat: station.latitude, lng: station.longitude});
-    });
-
-
-   }
-
-   ngOnDestroy() {
-    this.routeSubscription.unsubscribe();
-    //TODO: remove market listeners here
   }
 
+  private initMarkers (stations: Station[]): google.maps.Marker[] {
+    let self = this;
+    let markers: google.maps.Marker[] = [];
+    let infoWindow = new google.maps.InfoWindow();
 
+    stations.forEach((s) => {  
+      let marker = new google.maps.Marker({
+          position: new google.maps.LatLng(s.latitude, s.longitude),
+          map: this.map,
+          title: `station ${s.extra.uid} ${s.name}` 
+      });
 
+      marker.addListener('click', function() {
+        infoWindow.setOptions({ content: self.markerInfoContent(s)});
+        infoWindow.open(this.map,marker);
+      });
+
+      markers.push(marker);
+    });
+
+    return markers;
+  }
+
+  private markerInfoContent(station: Station): string{
+    return `<h4>station ${station.extra.uid} - ${station.name}</h4>
+                    <ul>
+                        <li>
+                           ${station.free_bikes} bikes available
+                        </li>
+                        <li>
+                           ${station.empty_slots} empty bike slots
+                        </li>
+                    </ul>`;
+  }
+
+  ngOnDestroy() {
+    this.onRouteChange.unsubscribe();
+    //TODO: destroy marker listeners here
+  }
 }

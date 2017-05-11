@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { StationsService } from './stations.service'
-import { GoogleApiService } from './google-api.service'
+import { GoogleMapApiService } from './google-api.service'
 import { StationFilterPipe } from './shared/stations-filter.pipe'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +32,7 @@ import { MdMenuModule, MdCardModule } from '@angular/material';
   ],
   providers: [
     StationsService,
-    GoogleApiService
+    GoogleMapApiService
   ],
   bootstrap: [AppComponent]
 })
