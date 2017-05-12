@@ -4,6 +4,8 @@ import { StationsService} from '.././stations.service';
 import { ActivatedRoute } from '@angular/router';
 import { Station } from '../model/Station';
 
+const MARKER_TOUCH_EVENT = 'mousedown';
+
 @Component({
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.less']
@@ -22,18 +24,17 @@ private map: google.maps.Map;
   async ngOnInit() {
     await this.googleApiService.initMap();       
     let stations = await this.stationsService.fetch();    
-    this.map =  new google.maps.Map(document.getElementById('map'));
-   
+    this.map =  new google.maps.Map(document.getElementById('map'));  
     this.markers = this.initMarkers(stations);
 
     this.onRouteChange = this.route.params.subscribe(params => {
        let routeWithNoId =  params['id'] === undefined;
        let stationId = routeWithNoId ? '111' : params['id'] // if no station requested fallback to default station 
        let station = stations.find((x) => x.extra.uid === stationId)
-    
+       let markerIndex = stations.indexOf(station);
        this.map.setZoom(routeWithNoId ? 14 : 18);
        this.map.setCenter({lat: station.latitude, lng: station.longitude});    
-  
+       google.maps.event.trigger(this.markers[markerIndex], MARKER_TOUCH_EVENT);  //open InfoWindow
           
     });
 
@@ -51,7 +52,7 @@ private map: google.maps.Map;
           title: `station ${s.extra.uid} ${s.name}` 
       });
 
-      marker.addListener('mousedown', function() {
+      marker.addListener(MARKER_TOUCH_EVENT, function() {
         infoWindow.setOptions({ content: self.markerInfoContent(s)});
         infoWindow.open(this.map,marker);
       });
@@ -76,6 +77,6 @@ private map: google.maps.Map;
 
   ngOnDestroy() {
     this.onRouteChange.unsubscribe();
-    this.markers.forEach( x =>  google.maps.event.clearListeners(x, 'mousedown'))
+    this.markers.forEach( x =>  google.maps.event.clearListeners(x, MARKER_TOUCH_EVENT))
   }
 }
