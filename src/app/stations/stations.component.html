@@ -19,7 +19,7 @@
 </div>
 
 <div class="stations">
-  <md-card *ngFor="let station of stations | stationFilter:filter; let i=index " class="station-card"  [routerLink]="['/map', station.extra.uid]">
+  <md-card *ngFor="let station of stations | stationFilter:filter; let i=index " class="station-card"  [routerLink]="['/plan', station.extra.uid]">
     <md-card-header>
       <div md-card-avatar class="station-avatar"></div>
       <md-card-title>Station {{ station.extra.uid }}</md-card-title>
