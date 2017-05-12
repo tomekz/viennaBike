@@ -1,18 +1,23 @@
-<p class="error" *ngIf="errorMsg">{{errorMsg}}</p>
+<!--<p class="error" *ngIf="errorMsg">{{errorMsg}}</p>-->
 
 <div>
-  <ul class="stations-list">
-     <li class="stations-list-item"> <input type="number" placeholder="Free bikes at least..." [(ngModel)]="filter.free_bikes">
+  <ul>
+     <!--<li class="search-form-item"> <input type="number" placeholder="Free bikes at least..." [(ngModel)]="filter.free_bikes"></li> -->
+    <li>
+      free bikes at least:
+      <md-slider min="0" max="20" step="1" value="0" thumbLabel tickInterval="1" [(ngModel)]="filter.free_bikes"></md-slider>
     </li> 
-    <li class="stations-list-item"> <input type="number" placeholder="Bezirk..." [(ngModel)]="filter.uid">
-    </li>
-    <li class="stations-list-item"><input type="text" placeholder="Street..." [(ngModel)]="filter.name">
-    </li>
-  </ul>
-
-
+    <li>bezirk
+         <md-select placeholder="Bezirk"  [(ngModel)]="filter.uid">
+          <md-option *ngFor="let bezirk of bezirks" [value]="bezirk" >{{ bezirk }}</md-option>
+        </md-select>
+</li>
   
+    <!--<li class="search-form-item"> <input type="number" placeholder="Bezirk..." [(ngModel)]="filter.uid"> </li>-->
+    <!--<li class="search-form-item"><input type="text" placeholder="Street..." [(ngModel)]="filter.name"></li>-->
+  </ul>
 </div>
+
 <div class="stations">
   <md-card *ngFor="let station of stations | stationFilter:filter; let i=index " class="station-card"  [routerLink]="['/map', station.extra.uid]">
     <md-card-header>
@@ -21,15 +26,11 @@
       <md-card-subtitle class="station-subtitle">{{ station.name }}</md-card-subtitle>
     </md-card-header>
     <md-card-content>
-      <!--<p>{{ station.extra.description }}</p>-->
-      <ul>
-        <li class="green"> {{ station.free_bikes}} bikes</li>
+      <ul >
+        <li class="station-bikes-count" [ngClass]="{'no-bikes' : station.free_bikes === 0}"> {{ station.free_bikes}} bikes</li>
         <li> {{ station.empty_slots}} empty slots</li>
       </ul>
     </md-card-content>
-    <!--<md-card-actions>
-      <button md-button>Find on map</button>
-    </md-card-actions>-->
   </md-card>
 </div>
 

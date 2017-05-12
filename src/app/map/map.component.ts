@@ -51,7 +51,7 @@ private map: google.maps.Map;
           title: `station ${s.extra.uid} ${s.name}` 
       });
 
-      marker.addListener('click', function() {
+      marker.addListener('mousedown', function() {
         infoWindow.setOptions({ content: self.markerInfoContent(s)});
         infoWindow.open(this.map,marker);
       });
@@ -76,6 +76,6 @@ private map: google.maps.Map;
 
   ngOnDestroy() {
     this.onRouteChange.unsubscribe();
-    //TODO: destroy marker listeners here
+    this.markers.forEach( x =>  google.maps.event.clearListeners(x, 'mousedown'))
   }
 }

@@ -15,6 +15,7 @@ export class StationsComponent implements OnDestroy, OnInit  {
   stations: Station[];
   errorMsg: string;
   filter: StationFilter = new StationFilter();
+  bezirks = Array.apply(null, Array(23)).map(function (_, i) {return i+1;});
 
   constructor(private service: StationsService, private router: Router) { }
 

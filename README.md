@@ -2,16 +2,17 @@
 
 [![logo](src/assets/img/citybike_logo.jpg "Vienna CityBike")](https://tomekz.github.io)
 
-Simple application that helps you localize nearest available CityBike in Vienna
+Simple web application that helps you localize nearest available CityBike in Vienna.
 
-It relays on real-time data (refreshed every small time inverval)
-
-[Open application](https://tomekz.github.io "viennaBike")
+Relying on real-time data shows current bikes and dock ability.
 
 Developed with:
-* Angular 2 (ver 4.0.0)
+* Angular 4.0.0
 * Google Maps API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+Data source: [https://api.citybik.es/v2/](https://api.citybik.es/v2/)
+
+[Go to application](https://tomekz.github.io "viennaBike")
+
 
 

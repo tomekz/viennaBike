@@ -1,21 +1,39 @@
-@color_1: green;
-
-.station-avatar{
-    background-image: url('/assets/img/citybike_logo.jpg');
-}
+@color_ok: green;
+@color_bad: red;
 
 .stations{
     display: flex;
-    flex-flow: wrap;
+    flex-flow: row wrap;
 }
 
-.stations-list{
-    list-style: none;
-    padding: 0;
-    margin: 0.5em 0;
+.station-card{
+   flex-grow: 1;
+   width: 6em;
+   margin: 0.15em;
+   cursor: pointer;
+
+   .station-avatar{
+        background-image: url('/assets/img/citybike_logo.jpg');
+    }
+
+
+    .station-subtitle{
+        word-break: break-all;
+    }
+
+    .station-bikes-count{
+        color: @color_ok;
+        margin-bottom: 0.2em;
+
+        &.no-bikes{
+            color: @color_bad;
+        }
+    }
+
 }
 
-.stations-list-item{
+
+.search-form-item{
     margin: 0.2em 0;
     width: 15em;
 
@@ -24,16 +42,4 @@
     }
 }
 
-.station-card{
-   width: 7.2em;
-   margin: 0.1em;
-   cursor: pointer;
-}
 
-.station-subtitle{
-   word-break: break-all;
-}
-
-.green{
-    color: @color_1;
-}

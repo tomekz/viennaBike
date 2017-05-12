@@ -1,0 +1,13 @@
+<div class="menu">
+  <md-menu #appMenu="mdMenu">
+    <button md-menu-item routerLink="/stations" routerLinkActive="active"> Stations </button>
+    <button md-menu-item routerLink="/map" routerLinkActive="active"> Plan </button>
+  </md-menu>
+
+  <button md-icon-button [mdMenuTriggerFor]="appMenu" class="menu-btn">
+      <md-icon>more_vert</md-icon>
+  </button>
+</div>
+
+
+

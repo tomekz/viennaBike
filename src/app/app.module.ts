@@ -11,7 +11,9 @@ import { AppComponent } from './app.component';
 import { StationsComponent } from './stations/stations.component';
 import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdMenuModule, MdCardModule } from '@angular/material';
+import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSliderModule, MdSelectModule } from '@angular/material';
+import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { MdMenuModule, MdCardModule } from '@angular/material';
     AppComponent,
     StationsComponent,
     MapComponent,
-    StationFilterPipe
+    StationFilterPipe,
+    FooterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,11 @@ import { MdMenuModule, MdCardModule } from '@angular/material';
     AppRoutingModule,
     BrowserAnimationsModule,
     MdMenuModule, 
-    MdCardModule
+    MdCardModule,
+    MdIconModule,
+    MdButtonModule,
+    MdSliderModule,
+    MdSelectModule
   ],
   providers: [
     StationsService,
