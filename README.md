@@ -10,7 +10,6 @@ Developed with:
 * Angular 4.0.0
 * Google Maps API
 
-Data source: [https://api.citybik.es/v2/](https://api.citybik.es/v2/)
 
 [Go to application](https://tomekz.github.io "viennaBike")
 
