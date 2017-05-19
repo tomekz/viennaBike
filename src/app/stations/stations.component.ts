@@ -15,7 +15,8 @@ export class StationsComponent implements OnDestroy, OnInit  {
   stations: Station[];
   errorMsg: string;
   filter: StationFilter = new StationFilter();
-  bezirks = Array.apply(null, Array(23)).map(function (_, i) {return i+1;});
+  bezirks = [1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20];
+  bikeCounts = Array.from(Array(20).keys());
 
   constructor(private service: StationsService, private router: Router) { }
 

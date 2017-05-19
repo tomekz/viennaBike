@@ -11,8 +11,7 @@ import { AppComponent } from './app.component';
 import { StationsComponent } from './stations/stations.component';
 import { MapComponent } from './map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSliderModule, MdSelectModule } from '@angular/material';
-import { FooterComponent } from './footer/footer.component';
+import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSelectModule } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 
 
@@ -22,7 +21,6 @@ import { MenuComponent } from './menu/menu.component';
     StationsComponent,
     MapComponent,
     StationFilterPipe,
-    FooterComponent,
     MenuComponent
   ],
   imports: [
@@ -35,7 +33,6 @@ import { MenuComponent } from './menu/menu.component';
     MdCardModule,
     MdIconModule,
     MdButtonModule,
-    MdSliderModule,
     MdSelectModule
   ],
   providers: [

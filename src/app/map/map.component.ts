@@ -32,10 +32,9 @@ private map: google.maps.Map;
        let stationId = routeWithNoId ? '111' : params['id'] // if no station requested fallback to default station 
        let station = stations.find((x) => x.extra.uid === stationId)
        let markerIndex = stations.indexOf(station);
-       this.map.setZoom(routeWithNoId ? 14 : 18);
+       this.map.setZoom(routeWithNoId ? 13 : 18);
        this.map.setCenter({lat: station.latitude, lng: station.longitude});    
-       google.maps.event.trigger(this.markers[markerIndex], MARKER_TOUCH_EVENT);  //open InfoWindow
-          
+       google.maps.event.trigger(this.markers[markerIndex], MARKER_TOUCH_EVENT);  //open InfoWindow          
     });
 
   }

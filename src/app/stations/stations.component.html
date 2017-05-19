@@ -1,21 +1,18 @@
-<!--<p class="error" *ngIf="errorMsg">{{errorMsg}}</p>-->
 
-<div>
-  <ul>
-     <!--<li class="search-form-item"> <input type="number" placeholder="Free bikes at least..." [(ngModel)]="filter.free_bikes"></li> -->
-    <li>
-      free bikes at least:
-      <md-slider min="0" max="20" step="1" value="0" thumbLabel tickInterval="1" [(ngModel)]="filter.free_bikes"></md-slider>
-    </li> 
-    <li>bezirk
+<div class="search-form">
+  <ul class="search-options">
+    <li >
          <md-select placeholder="Bezirk"  [(ngModel)]="filter.uid">
+          <md-option value="{{null}}">None </md-option>
           <md-option *ngFor="let bezirk of bezirks" [value]="bezirk" >{{ bezirk }}</md-option>
         </md-select>
-</li>
-  
-    <!--<li class="search-form-item"> <input type="number" placeholder="Bezirk..." [(ngModel)]="filter.uid"> </li>-->
-    <!--<li class="search-form-item"><input type="text" placeholder="Street..." [(ngModel)]="filter.name"></li>-->
-  </ul>
+   </li>
+    <li >
+       <md-select placeholder="Free bikes min" [(ngModel)]="filter.free_bikes">
+          <md-option *ngFor="let bikeCount of bikeCounts" [value]="bikeCount" >{{ bikeCount }}</md-option>                   
+        </md-select>
+    </li>  
+ </ul>
 </div>
 
 <div class="stations">
@@ -33,6 +30,12 @@
     </md-card-content>
   </md-card>
 </div>
+
+<span class="api-link">
+      data source: <a href="https://api.citybik.es/v2/">api.citybik.es</a>      
+</span>
+
+
 
 
 
