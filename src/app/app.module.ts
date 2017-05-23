@@ -5,14 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { StationsService } from './stations.service'
 import { GoogleMapApiService } from './google-api.service'
-import { StationFilterPipe } from './shared/stations-filter.pipe'
+import { StationFilterPipe } from './stations-filter.pipe'
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { StationsComponent } from './stations/stations.component';
-import { MapComponent } from './map/map.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { AppComponent } from './components/app.component';
+import { StationsComponent } from './components/stations/stations.component';
+import { MapComponent } from './components/map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSelectModule } from '@angular/material';
-import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({

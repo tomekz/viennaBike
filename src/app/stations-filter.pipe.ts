@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Station } from '../model/Station';
-import { StationFilter } from '../model/StationFilter';
+import { Station } from './model/Station';
+import { StationFilter } from './model/StationFilter';
 
 @Pipe({
     name: 'stationFilter',

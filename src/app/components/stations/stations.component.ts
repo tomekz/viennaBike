@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { StationsService} from '.././stations.service';
-import { Station } from '../model/Station';
-import { StationFilter } from '../model/StationFilter';
+import { StationsService } from '../.././stations.service';
+import { Station } from '../../model/Station';
+import { StationFilter } from '../../model/StationFilter';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/takeUntil';

@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GoogleMapApiService} from '.././google-api.service';
-import { StationsService} from '.././stations.service';
+import { GoogleMapApiService} from '../.././google-api.service';
+import { StationsService} from '../.././stations.service';
 import { ActivatedRoute } from '@angular/router';
-import { Station } from '../model/Station';
+import { Station } from '../../model/Station';
 
 const MARKER_TOUCH_EVENT = 'mousedown';
+const ZOOM_L = 17;
+const ZOOM_S = 12;
 
 @Component({
   templateUrl: './map.component.html',
@@ -32,7 +34,7 @@ private map: google.maps.Map;
        let stationId = routeWithNoId ? '111' : params['id'] // if no station requested fallback to default station 
        let station = stations.find((x) => x.extra.uid === stationId)
        let markerIndex = stations.indexOf(station);
-       this.map.setZoom(routeWithNoId ? 13 : 18);
+       this.map.setZoom(routeWithNoId ? ZOOM_S : ZOOM_L);
        this.map.setCenter({lat: station.latitude, lng: station.longitude});    
        google.maps.event.trigger(this.markers[markerIndex], MARKER_TOUCH_EVENT);  //open InfoWindow          
     });
