@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -12,8 +12,7 @@ import { AppComponent } from './components/app.component';
 import { StationsComponent } from './components/stations/stations.component';
 import { MapComponent } from './components/map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSelectModule } from '@angular/material';
-
+import { MaterialModule } from './material.module'; 
 
 @NgModule({
   declarations: [
@@ -29,11 +28,7 @@ import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSelectModul
     HttpModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MdMenuModule, 
-    MdCardModule,
-    MdIconModule,
-    MdButtonModule,
-    MdSelectModule
+    MaterialModule
   ],
   providers: [
     StationsService,

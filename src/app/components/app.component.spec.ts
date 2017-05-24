@@ -2,15 +2,25 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
+import { MenuComponent } from './menu/menu.component';
+import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSelectModule } from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MdMenuModule, 
+        MdCardModule,
+        MdIconModule,
+        MdButtonModule,
+        MdSelectModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MenuComponent,
+       
+
       ],
     }).compileComponents();
   }));
