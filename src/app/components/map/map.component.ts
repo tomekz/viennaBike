@@ -14,8 +14,8 @@ const ZOOM_S = 12;
 })
 export class MapComponent implements OnInit, OnDestroy {
 private onRouteChange: any;
-private markers: google.maps.Marker[] = [];
 private map: google.maps.Map;
+markers: google.maps.Marker[] = [];
 
   constructor(
     private googleApiService: GoogleMapApiService, 

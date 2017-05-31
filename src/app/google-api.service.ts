@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http'
 
 const API_KEY = 'AIzaSyCd-J7Qkn0OV7HgGCEERozyc9j_bN_4qFM';
 const url = 'https://maps.googleapis.com/maps/api/js?key='+ API_KEY +'&callback=initMap';
@@ -9,7 +8,7 @@ const url = 'https://maps.googleapis.com/maps/api/js?key='+ API_KEY +'&callback=
 export class GoogleMapApiService {
   private loadMap: Promise<any>;
 
-  constructor(private http:Http) {
+  constructor() {
     this.loadMap = new Promise((resolve) => {
       window['initMap'] = () => {
         resolve();
@@ -18,7 +17,7 @@ export class GoogleMapApiService {
     });
   }
 
-  public initMap():Promise<any> {
+  initMap():Promise<any> {
     return this.loadMap;
   }
 
