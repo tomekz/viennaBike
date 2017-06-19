@@ -7,6 +7,9 @@ import { StationsService} from '../.././stations.service';
 import { MapComponent } from './map.component';
 import { HttpModule } from '@angular/http';
 import { Station } from '../../model/Station';
+import fakeStations from '../stations/fake-stations' 
+
+
 
 describe('MapComponent', () => {
   let component: MapComponent;
@@ -14,38 +17,7 @@ describe('MapComponent', () => {
   let fixture: ComponentFixture<MapComponent>;
   let initMapSpy: any;
   let stationsSpy: any;
-  const stations: Station[] = [
-    {
-          'id': '1',
-          'name': 'Lichtenfelsgasse',
-          'latitude': 48.193084489389825 ,
-          'longitude': 16.3339528441 ,
-          'free_bikes': 4,
-          'empty_slots' :16,
-          'timestamp': new Date("February 4, 2016 10:13:00"),
-          'extra': {
-            'description': 'Ecke Lichtenfelsgasse U2 Station Rathaus',
-            'slots': 2,
-            'status': 'aktiv',
-            'uid': '1080'
-          }
-    },
-    {
-          'id': '2',
-          'name': 'Mariahilferstrasse',
-          'latitude': 48.2081743 ,
-          'longitude': 16.3738189 ,
-          'free_bikes': 4,
-          'empty_slots' :16,
-          'timestamp': new Date("February 4, 2016 10:13:00"),
-          'extra': {
-            'description': 'Mariahilfer Stra\u00dfe 165 - Ecke Turnergasse',
-            'slots': 2,
-            'status': 'aktiv',
-            'uid': '111'
-          }
-    }
-  ]
+  const stations: Station[] = fakeStations.network.stations.map(s => new Station(s))
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -62,8 +34,7 @@ describe('MapComponent', () => {
         let stationsService = fixture.debugElement.injector.get(StationsService);
         initMapSpy = spyOn(googleMapApiService, 'initMap').and.returnValue(Promise.resolve());
         stationsSpy = spyOn(stationsService, 'fetch').and.returnValue(Promise.resolve(stations));
-    });
-  
+    }); 
   }));
 
   it('should create ', () => {
@@ -92,7 +63,7 @@ describe('MapComponent', () => {
   it('should init map with markers', async(() => {
      fixture.detectChanges();
      fixture.whenStable().then(() => { // wait for initMap and fetch stations to finish             
-      expect(component.markers.length).toBe(2);
+      expect(component.markers.length).toBe(121);
     });
   }));
 

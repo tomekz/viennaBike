@@ -11,11 +11,11 @@ import { StationsService } from '../.././stations.service'
 import { StationFilterPipe } from '../.././stations-filter.pipe'
 import { Observable } from 'rxjs/Rx'
 import { Station }  from '../../model/Station'
-import data from './fake-stations' 
+import fakeStations from './fake-stations' 
 
 class StationsServiceStub {
   fetchObservable() :Observable<Station[]>{
-    return Observable.of(data.network.stations.map((s) => new Station(s)))
+    return Observable.of(fakeStations.network.stations.map((s) => new Station(s)))
   }
 }
 
@@ -38,10 +38,6 @@ describe('StationsComponent', () => {
       debugElement = fixture.debugElement;
     });
   }));
-
-  beforeEach(() => {
-    
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy()
