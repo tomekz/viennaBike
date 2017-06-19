@@ -14,6 +14,10 @@ export class Station{
     empty_slots :number
     timestamp: Date
     extra: StationExtra
+
+    constructor(data) {
+        Object.assign(this, data);
+    }
 }
 
 

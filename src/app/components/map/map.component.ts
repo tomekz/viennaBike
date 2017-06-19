@@ -3,6 +3,7 @@ import { GoogleMapApiService} from '../.././google-api.service';
 import { StationsService} from '../.././stations.service';
 import { ActivatedRoute } from '@angular/router';
 import { Station } from '../../model/Station';
+import {} from 'googlemaps'
 
 const MARKER_TOUCH_EVENT = 'mousedown';
 const ZOOM_L = 17;

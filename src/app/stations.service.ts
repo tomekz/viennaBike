@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import  { Station }  from './model/Station';
 
+
 @Injectable()
 export class StationsService {
   private url = 'https://api.citybik.es/v2/networks/citybike-wien';

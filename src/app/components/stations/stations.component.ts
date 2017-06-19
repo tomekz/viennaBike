@@ -13,7 +13,6 @@ import 'rxjs/add/operator/takeUntil';
 export class StationsComponent implements OnDestroy, OnInit  {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   stations: Station[];
-  errorMsg: string;
   filter: StationFilter = new StationFilter();
   bezirks = [1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20];
   bikeCounts = Array.from(Array(20).keys());
@@ -25,7 +24,6 @@ export class StationsComponent implements OnDestroy, OnInit  {
                 .takeUntil(this.ngUnsubscribe)
                 .subscribe(
                   (data) => this.stations = data,
-                  (err) => this.errorMsg = err
                 );
   }
 
