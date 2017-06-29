@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { AppComponent } from './components/app.component';
 import { StationsComponent } from './components/stations/stations.component';
+import { NearMeComponent } from './components/nearMe/nearMe.component';
 import { MapComponent } from './components/map/map.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module'; 
@@ -21,7 +22,8 @@ import { MaterialModule } from './material.module';
     StationsComponent,
     MapComponent,
     StationFilterPipe,
-    MenuComponent
+    MenuComponent,
+    NearMeComponent
   ],
   imports: [
     BrowserModule,

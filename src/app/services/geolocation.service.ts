@@ -6,7 +6,7 @@ import { EventEmitter } from '@angular/core';
 export class GeolocationService {
   position: Position
   err: PositionError
-  html5LocationToggled: EventEmitter<Position>
+  html5LocationToggled: EventEmitter<boolean>
 
   constructor() {
     this.html5LocationToggled = new EventEmitter()
@@ -18,18 +18,16 @@ export class GeolocationService {
     return new Promise<Position>((resolve, reject) => {
       navigator.geolocation.getCurrentPosition( (position) => {
           resolve(position)
-          console.log(position)
-          this.html5LocationToggled.emit(position)        
+          this.html5LocationToggled.emit(true)        
         }, (err) => {
           reject(err)
-          this.html5LocationToggled.emit(null)
+          this.html5LocationToggled.emit(false)
         }
       )
     })
-
-
-
   }
+
+  
   // taken from: https://stackoverflow.com/a/27943
   distance(lat1, lon1, lat2, lon2) {
     var R = 6371; 

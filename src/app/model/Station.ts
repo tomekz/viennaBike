@@ -14,7 +14,16 @@ export class Station{
     empty_slots :number
     timestamp: Date
     extra: StationExtra
+    
+    constructor(data) {
+        Object.assign(this, data);
+    }
+}
+
+export class StationListItem{
+    name: string
     distance: number
+    uid: string
     
     constructor(data) {
         Object.assign(this, data);
