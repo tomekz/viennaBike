@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { GoogleMapApiService} from '../.././google-api.service';
-import { StationsService} from '../.././stations.service';
+import { GoogleMapApiService} from '../../services/google-api.service';
+import { StationsService} from '../../services/stations.service';
 import { ActivatedRoute } from '@angular/router';
 import { Station } from '../../model/Station';
 import {} from 'googlemaps'

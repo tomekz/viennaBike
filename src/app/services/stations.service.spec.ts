@@ -2,12 +2,12 @@
 import {} from 'jasmine'
 import { TestBed, inject } from '@angular/core/testing';
 import { StationsService } from './stations.service';
-import { StationsComponent } from './components/stations/stations.component'
+import { StationsComponent } from '.././components/stations/stations.component'
 import { HttpModule,Http,Response, ResponseOptions, XHRBackend } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { Observable } from 'rxjs/Rx'
-import { Station }  from './model/Station'
-import fakeStations from './components/stations/fake-stations' 
+import { Station }  from '.././model/Station'
+import fakeStations from '.././components/stations/fake-stations' 
 
 describe('StationsService', () => {
   beforeEach(() => {

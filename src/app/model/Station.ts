@@ -14,7 +14,8 @@ export class Station{
     empty_slots :number
     timestamp: Date
     extra: StationExtra
-
+    distance: number
+    
     constructor(data) {
         Object.assign(this, data);
     }

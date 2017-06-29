@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import  { Station }  from './model/Station';
+import { Station }  from '.././model/Station';
+import { GeolocationService } from './geolocation.service'
 
 
 @Injectable()
@@ -9,7 +10,7 @@ export class StationsService {
   private url = 'https://api.citybik.es/v2/networks/citybike-wien';
   private poolInterval = 10000 //10 secs
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private geolocation: GeolocationService) { }
 
   fetchObservable(): Observable<Station[]> { 
     return Observable
@@ -38,7 +39,7 @@ export class StationsService {
   private mapResponse(res: Response){  
     console.log('fetched data')
     let body = res.json();
-    return body.network.stations || {};
+    return body.network.stations || {}
   }
   
 }

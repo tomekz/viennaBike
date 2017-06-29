@@ -1,7 +1,19 @@
 <div class="menu">
   <md-menu #appMenu="mdMenu">
-    <button md-menu-item routerLink="/" routerLinkActive="active"> Stations </button>
-    <button md-menu-item routerLink="/plan" routerLinkActive="active"> Plan </button>
+    <button md-menu-item routerLink="/" routerLinkActive="active"> 
+       <md-icon>directions_bike</md-icon>
+       <span>Stations</span>
+    </button>
+    <button md-menu-item routerLink="/plan" routerLinkActive="active"> 
+        <md-icon>map</md-icon>
+        <span>Plan</span>
+    </button>
+    <button md-menu-item routerLink="/near" routerLinkActive="active"> 
+        <md-icon>my_location</md-icon>
+        <span>Near me</span>
+     </button>
+
+  
   </md-menu>
 
   <button md-icon-button [mdMenuTriggerFor]="appMenu" class="menu-btn">

@@ -1,39 +1,45 @@
-
-<div class="search-form">
-  <ul class="search-options">
-    <li >
-         <md-select placeholder="Bezirk"  [(ngModel)]="filter.uid">
-          <md-option value="{{null}}">None </md-option>
-          <md-option *ngFor="let bezirk of bezirks" [value]="bezirk" >{{ bezirk }}</md-option>
-        </md-select>
-   </li>
-    <li >
-       <md-select placeholder="Bikes min" [(ngModel)]="filter.free_bikes">
-          <md-option *ngFor="let bikeCount of bikeCounts" [value]="bikeCount" >{{ bikeCount }}</md-option>                   
-        </md-select>
-    </li>  
- </ul>
+<div *ngIf="errorMsg" class="error">
+  <md-icon class="error-icon">error</md-icon>  
+  <span>{{ errorMsg }}</span> 
 </div>
 
-<div class="stations">
-  <md-card *ngFor="let station of stations | stationFilter:filter; let i=index " class="station-card"  [routerLink]="['/plan', station.extra.uid]">
-    <md-card-header>
-      <div md-card-avatar class="station-avatar"></div>
-      <md-card-title>Station {{ station.extra.uid }}</md-card-title>
-      <md-card-subtitle class="station-subtitle">{{ station.name }}</md-card-subtitle>
-    </md-card-header>
-    <md-card-content>
-      <ul >
-        <li class="station-bikes-count" [ngClass]="{'no-bikes' : station.free_bikes === 0}"> {{ station.free_bikes}} bikes</li>
-        <li> {{ station.empty_slots}} empty slots</li>
-      </ul>
-    </md-card-content>
-  </md-card>
+<div *ngIf="!errorMsg">
+    <div class="search-form" >
+      <ul class="search-options">
+        <li >
+            <md-select placeholder="Bezirk"  [(ngModel)]="filter.uid">
+              <md-option value="{{null}}">None </md-option>
+              <md-option *ngFor="let bezirk of bezirks" [value]="bezirk" >{{ bezirk }}</md-option>
+            </md-select>
+      </li>
+        <li >
+          <md-select placeholder="Bikes min" [(ngModel)]="filter.free_bikes">
+              <md-option *ngFor="let bikeCount of bikeCounts" [value]="bikeCount" >{{ bikeCount }}</md-option>                   
+            </md-select>
+        </li>  
+    </ul>
+    </div>
+
+    <div class="stations">
+      <md-card *ngFor="let station of stations | stationFilter:filter; let i=index " class="station-card"  [routerLink]="['/plan', station.extra.uid]">
+        <md-card-header>
+          <div md-card-avatar class="station-avatar"></div>
+          <md-card-title>Station {{ station.extra.uid }}</md-card-title>
+          <md-card-subtitle class="station-subtitle">{{ station.name }}</md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+          <ul >
+            <li class="station-bikes-count" [ngClass]="{'no-bikes' : station.free_bikes === 0}"> {{ station.free_bikes}} bikes</li>
+            <li> {{ station.empty_slots}} empty slots</li>
+          </ul>
+        </md-card-content>
+      </md-card>
+    </div>
+    <span class="api-link">
+          data source: <a href="https://api.citybik.es/v2/">api.citybik.es</a>      
+      </span>
 </div>
 
-<span class="api-link">
-      data source: <a href="https://api.citybik.es/v2/">api.citybik.es</a>      
-</span>
 
 
 
