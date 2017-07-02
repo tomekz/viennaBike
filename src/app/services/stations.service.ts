@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Station }  from '.././model/Station';
-import { GeolocationService } from './geolocation.service'
 
 
 @Injectable()
@@ -10,7 +9,7 @@ export class StationsService {
   private url = 'https://api.citybik.es/v2/networks/citybike-wien';
   private poolInterval = 10000 //10 secs
 
-  constructor(private http: Http, private geolocation: GeolocationService) { }
+  constructor(private http: Http) { }
 
   fetchObservable(): Observable<Station[]> { 
     return Observable

@@ -8,6 +8,7 @@ import {} from 'googlemaps'
 const MARKER_TOUCH_EVENT = 'mousedown';
 const ZOOM_L = 17;
 const ZOOM_S = 12;
+const FALLBACK_STATION = 111 //Opern
 
 @Component({
   templateUrl: './map.component.html',
@@ -32,7 +33,7 @@ markers: google.maps.Marker[] = [];
 
     this.onRouteChange = this.route.params.subscribe(params => {
        let routeWithNoId =  params['id'] === undefined;
-       let stationId = routeWithNoId ? '111' : params['id'] // if no station requested fallback to default station 
+       let stationId = routeWithNoId ? `${FALLBACK_STATION}` : params['id'] // if no station requested fallback to default station 
        let station = stations.find((x) => x.extra.uid === stationId)
        let markerIndex = stations.indexOf(station);
        this.map.setZoom(routeWithNoId ? ZOOM_S : ZOOM_L);
