@@ -45,13 +45,11 @@ export class NearMeComponent implements OnInit  {
 
    getStationsNearMe(stations, pos){
     return new Promise<StationListItem[]>((resolve, reject) => {
-      setTimeout(() => {
-        console.log(44)
-      },4000)
-      stations.map( s =>  {
+      let res = stations.map( s =>  {
         let distance = this.geolocation.distance(pos.coords.latitude, pos.coords.longitude, s.latitude, s.longitude)
         return new StationListItem({ name: `Station ${s.extra.uid} ${s.name}` , distance : distance.toFixed(1), uid: s.extra.uid} )
       }).sort((a, b) => a.distance - b.distance ).slice(0,10)
+      resolve(res)
     })
   }
 }
