@@ -2,7 +2,7 @@
 
  Web application optimized for mobile devices that helps you localize nearest available CityBike in Vienna.
 
-* See what stations are the closest to your current location and the distance
+* See what stations are the closest to your current location and what's the distance
 
 * Check the station's current bikes and dock ability as well as its position on the map
 
