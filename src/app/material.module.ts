@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 
 // Material
-import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSelectModule , MdListModule} from '@angular/material';
+import { MdMenuModule, MdCardModule, MdIconModule, MdButtonModule, MdSelectModule , MdListModule, MdProgressSpinnerModule} from '@angular/material';
 
 const MATERIAL_UI_MODULES = [
-  MdMenuModule, 
-  MdCardModule, 
-  MdIconModule, 
-  MdButtonModule, 
+  MdMenuModule,
+  MdCardModule,
+  MdIconModule,
+  MdButtonModule,
   MdSelectModule,
-  MdListModule
+  MdListModule,
+  MdProgressSpinnerModule
 ]
 
 @NgModule({

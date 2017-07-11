@@ -11,27 +11,47 @@ import { StationListItem } from '../../model/Station';
 export class NearMeComponent implements OnInit  {
   stationItems: StationListItem[];
   errorMsg: string
+  isLoading: boolean = true
 
   constructor(private stationService: StationsService, private geolocation: GeolocationService) { }
 
   async ngOnInit() {
-     this.geolocation.html5LocationToggled.subscribe((enabled) => {
-      if(enabled)
-        this.errorMsg = undefined
-      else 
-        this.errorMsg = this.geolocation.err ? this.geolocation.err.message : 'turn on your HTML5 browser geolocation'     
+    this.geolocation.html5LocationToggled.subscribe((err) => {
+      if(err){
+        switch(err.code){
+          case 1: this.errorMsg = 'Turn on your geolocation service '
+                  break
+          case 2: this.errorMsg = `Currently it's not possible to locate your position`
+                  break
+          default: this.errorMsg = 'There was an error retrieving your location'
+        }
+        this.isLoading = false
+        return
+      }
     })
 
-    let stations = await this.stationService.fetch();
-    let position = await this.geolocation.getPosition()
-    this.stationItems = this.getStationsNearMe(stations, position) 
+    try{
+      let position = await this.geolocation.getPosition()
+      let stations = await this.stationService.fetch();
+      this.stationItems = await this.getStationsNearMe(stations, position)
+    }
+    catch(err){
+      this.errorMsg = err
+    }
+    finally{
+      this.isLoading = false
+    }
   }
 
-   getStationsNearMe(stations, pos){  
-    return stations.map( s =>  {
-      let distance = this.geolocation.distance(pos.coords.latitude, pos.coords.longitude, s.latitude, s.longitude)
-      return new StationListItem({ name: `Station ${s.extra.uid} ${s.name}` , distance : distance.toFixed(1), uid: s.extra.uid} )
-    }).sort((a, b) => a.distance - b.distance ).slice(0,10)
-   
-  }  
+   getStationsNearMe(stations, pos){
+    return new Promise<StationListItem[]>((resolve, reject) => {
+      setTimeout(() => {
+        console.log(44)
+      },4000)
+      stations.map( s =>  {
+        let distance = this.geolocation.distance(pos.coords.latitude, pos.coords.longitude, s.latitude, s.longitude)
+        return new StationListItem({ name: `Station ${s.extra.uid} ${s.name}` , distance : distance.toFixed(1), uid: s.extra.uid} )
+      }).sort((a, b) => a.distance - b.distance ).slice(0,10)
+    })
+  }
 }

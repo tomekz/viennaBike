@@ -18,18 +18,22 @@ export class StationsComponent implements OnDestroy, OnInit  {
   bezirks = [1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20];
   bikeCounts = Array.from(Array(20).keys());
   errorMsg: string
+  isLoading: boolean = true
 
   constructor(private service: StationsService, private router: Router) { }
 
   ngOnInit() {
-
     this.service.fetchObservable()
-                .takeUntil(this.ngUnsubscribe)
-                .subscribe(
-                  (data) => { 
-                    this.stations = data 
-                  },
-                  (err) => this.errorMsg = err);
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(
+        (data) => {
+          this.stations = data
+          this.isLoading = false
+        },
+        (err) => {
+          this.errorMsg = err
+          this.isLoading = false
+        });
   }
 
   ngOnDestroy() {

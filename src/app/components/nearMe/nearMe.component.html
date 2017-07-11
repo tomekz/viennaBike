@@ -1,10 +1,10 @@
 <div *ngIf="errorMsg" class="error">
-  <md-icon class="error-icon">error</md-icon>  
-  <span>{{ errorMsg }}</span> 
+  <md-icon class="error-icon">error</md-icon>
+  <span>{{ errorMsg }}</span>
 </div>
 
 <div *ngIf="!errorMsg">
-  
+
     <md-list>
     <h3 md-subheader>Stations near me</h3>
     <md-list-item *ngFor="let station of stationItems " [routerLink]="['/plan', station.uid]">
@@ -13,9 +13,13 @@
       <p md-line><strong> {{ station.distance }} km </strong></p>
       <md-divider></md-divider>
     </md-list-item>
-   
+
   </md-list>
 
+</div>
+
+<div class="spinner" [hidden]="!isLoading">
+  <md-spinner class="md-spinner"></md-spinner>
 </div>
 
 

@@ -8,5 +8,4 @@ export const routes: Routes = [
   { path: 'near',  component: NearMeComponent },
   { path: 'plan',     component: MapComponent },
   { path: 'plan/:id',     component: MapComponent }
-  
 ];

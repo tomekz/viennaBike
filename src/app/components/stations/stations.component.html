@@ -1,6 +1,6 @@
 <div *ngIf="errorMsg" class="error">
-  <md-icon class="error-icon">error</md-icon>  
-  <span>{{ errorMsg }}</span> 
+  <md-icon class="error-icon">error</md-icon>
+  <span>{{ errorMsg }}</span>
 </div>
 
 <div *ngIf="!errorMsg">
@@ -14,9 +14,9 @@
       </li>
         <li >
           <md-select placeholder="Bikes min" [(ngModel)]="filter.free_bikes">
-              <md-option *ngFor="let bikeCount of bikeCounts" [value]="bikeCount" >{{ bikeCount }}</md-option>                   
+              <md-option *ngFor="let bikeCount of bikeCounts" [value]="bikeCount" >{{ bikeCount }}</md-option>
             </md-select>
-        </li>  
+        </li>
     </ul>
     </div>
 
@@ -35,12 +35,14 @@
         </md-card-content>
       </md-card>
     </div>
-    <span class="api-link">
-          data source: <a href="https://api.citybik.es/v2/">api.citybik.es</a>      
-      </span>
+    <span class="api-link" [hidden]="isLoading">
+          data source: <a href="https://api.citybik.es/v2/">api.citybik.es</a>
+    </span>
 </div>
 
-
+<div class="spinner" [hidden]="!isLoading">
+  <md-spinner class="md-spinner"></md-spinner>
+</div>
 
 
 

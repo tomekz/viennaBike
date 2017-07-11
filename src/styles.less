@@ -9,11 +9,26 @@ html {
 body {
     height: 100%;
     margin: 0;
-    font-family: Roboto,"Helvetica Neue",sans-serif    
+    font-family: Roboto,"Helvetica Neue",sans-serif
 }
 
 ul{
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+[hidden] { display: none !important;}
+
+.spinner{
+  display: flex;
+  justify-content: center;
+
+  .md-spinner{
+    height: 300px;
+  }
+
+  .mat-spinner path{
+    stroke: black
+  }
 }
