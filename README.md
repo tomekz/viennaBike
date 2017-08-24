@@ -11,11 +11,11 @@
 
 Developed with Angular & Google Maps API
 
-## Demo
+# Demo
 
-[Go to application](https://tomekz.github.io "viennaBike")
+[Go To Application](https://tomekz.github.io "viennaBike")
 
-## Getting Started
+# Getting Started
 
 ```bash
 # clone and navigate to repo
